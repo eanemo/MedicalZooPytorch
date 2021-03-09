@@ -1,0 +1,8 @@
+torch
+torchvision
+torchsummary
+torchsummaryX
+tensorboard
+nibabel
+scipy
+matplotlib
