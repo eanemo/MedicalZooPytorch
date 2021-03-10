@@ -16,7 +16,7 @@ import lib.medzoo as medzoo
 import lib.train as train
 from lib.losses3D.Dice2D import DiceLoss2D
 
-os.environ["CUDA_VISIBLE_DEVICES"] = "1"
+os.environ["CUDA_VISIBLE_DEVICES"] = "0"
 seed = 1777777
 torch.manual_seed(seed)
 
@@ -34,6 +34,8 @@ def main():
     if args.cuda:
         model = model.cuda()
         print("Model transferred in GPU.....")
+
+    print("Using args", args)
 
     trainer = train.Trainer(args, model, criterion, optimizer, train_data_loader=training_generator,
                             valid_data_loader=val_generator, lr_scheduler=None)
@@ -53,6 +55,7 @@ def get_arguments():
     parser.add_argument('--inChannels', type=int, default=3)
     parser.add_argument('--inModalities', type=int, default=1)
     parser.add_argument('--dataset_path', type=str, default='.././datasets')
+    parser.add_argument('--terminal_show_freq', help='terminal_show_freq (default 50)', default=50)
     #parser.add_argument('--samples_train', type=int, default=100)
     #parser.add_argument('--samples_val', type=int, default=10)
     parser.add_argument('--split', default=0.8, type=float, help='Select percentage of training data(default: 0.8)')
