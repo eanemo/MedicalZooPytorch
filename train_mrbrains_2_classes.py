@@ -42,6 +42,7 @@ def get_arguments():
     parser.add_argument('--nEpochs', type=int, default=200)
     parser.add_argument('--inChannels', type=int, default=3)
     parser.add_argument('--inModalities', type=int, default=3)
+    parser.add_argument('--terminal_show_freq', default=50)
     parser.add_argument('--samples_train', type=int, default=10)
     parser.add_argument('--samples_val', type=int, default=10)
     parser.add_argument('--classes', type=int, default=2)
