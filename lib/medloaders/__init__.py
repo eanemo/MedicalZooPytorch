@@ -233,5 +233,12 @@ def select_full_volume_for_infer(args, path='.././datasets'):
         val_loader = COVID_Seg_Dataset(mode='val', dataset_path=path, crop_dim=args.dim,
                                        fold=0, samples=samples_val)
 
+    elif args.dataset_name == "mandible_seg":
+        train_loader = Mandible_Seg_Dataset(mode='train', dataset_path=path, crop_dim=args.dim,
+                                         fold=0, samples=samples_train)
+
+        val_loader = Mandible_Seg_Dataset(mode='val', dataset_path=path, crop_dim=args.dim,
+                                       fold=0, samples=samples_val)
+
     print("DATA SAMPLES HAVE BEEN GENERATED SUCCESSFULLY")
     return loader.full_volume, loader.affine
