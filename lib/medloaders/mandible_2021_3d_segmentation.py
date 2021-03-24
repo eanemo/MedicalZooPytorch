@@ -29,7 +29,7 @@ class Mandible_Seg_Dataset(Dataset):
         self.CLASSES = n_classes
         self.fold = int(fold)
         self.crop_size = crop_dim
-        self.full_vol_dim = (256, 256, 192)  # width, height,slice,
+        self.full_vol_dim = (256, 256, 192)  # width, height,slice
         self.mode = mode
         self.full_volume = None
         self.affine = None
