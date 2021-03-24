@@ -11,6 +11,7 @@ from .iseg2019 import MRIDatasetISEG2019
 from .ixi_t1_t2 import IXIMRIdataset
 from .miccai_2019_pathology import MICCAI2019_gleason_pathology
 from .mrbrains2018 import MRIDatasetMRBRAINS2018
+from .mandible_2021_3d_segmentation import Mandible_Seg_Dataset
 
 
 def generate_datasets(args, path='.././datasets'):
@@ -122,6 +123,12 @@ def generate_datasets(args, path='.././datasets'):
                                          fold=0, samples=samples_train)
 
         val_loader = COVID_Seg_Dataset(mode='val', dataset_path=path, crop_dim=args.dim,
+                                       fold=0, samples=samples_val)
+    elif args.dataset_name == "mandible_seg":
+        train_loader = Mandible_Seg_Dataset(mode='train', dataset_path=path, crop_dim=args.dim,
+                                         fold=0, samples=samples_train)
+
+        val_loader = Mandible_Seg_Dataset(mode='val', dataset_path=path, crop_dim=args.dim,
                                        fold=0, samples=samples_val)
     training_generator = DataLoader(train_loader, **params)
     val_generator = DataLoader(val_loader, **params)
