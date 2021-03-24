@@ -55,8 +55,9 @@ class Trainer:
         for batch_idx, input_tuple in enumerate(self.train_data_loader):
 
             self.optimizer.zero_grad()
-
             input_tensor, target = prepare_input(input_tuple=input_tuple, args=self.args)
+            print("Input shape", input_tensor.shape)
+            print("target", target.shape)
             input_tensor.requires_grad = True
             output = self.model(input_tensor)
             loss_dice, per_ch_score = self.criterion(output, target)
