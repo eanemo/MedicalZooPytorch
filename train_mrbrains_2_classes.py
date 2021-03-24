@@ -20,7 +20,7 @@ def main():
     utils.make_dirs(args.save)
 
     training_generator, val_generator, full_volume, affine = medical_loaders.generate_datasets(args,
-                                                                                               path='.././datasets')
+                                                                                               path=args.dataset_path)
     model, optimizer = medzoo.create_model(args)
 
     criterion = DiceLoss(classes=11, skip_index_after=args.classes)
@@ -37,6 +37,7 @@ def get_arguments():
     parser = argparse.ArgumentParser()
     parser.add_argument('--batchSz', type=int, default=4)
     parser.add_argument('--dataset_name', type=str, default="mrbrains4")
+    parser.add_argument('--dataset_path', type=str, default="datasets")
     parser.add_argument('--dim', nargs="+", type=int, default=(128, 128, 48))
     parser.add_argument('--nEpochs', type=int, default=200)
     parser.add_argument('--inChannels', type=int, default=3)
